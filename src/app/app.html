@@ -1,0 +1,73 @@
+<!-- Header -->
+<header class="header">
+  <div class="container">
+    <h1 class="logo">{{ title() }}</h1>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <ul class="nav-links">
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#products" class="nav-link">Products</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- Main Content -->
+<main class="main">
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="container">
+      <h2>Welcome to {{ title() }}</h2>
+      <p>Discover our amazing collection of products</p>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section id="products" class="products">
+    <div class="container">
+      <h2>Our Products</h2>
+      <div class="product-grid">
+        @for (product of products(); track product.id) {
+          <div class="product-card">
+            <div class="product-image">
+              <img src="{{ product.image }}" alt="{{ product.name }}" class="product-img" />
+            </div>
+            <div class="product-info">
+              <h3>{{ product.name }}</h3>
+              <p class="price">${{ product.price }}</p>
+              <button 
+                class="add-to-cart-btn"
+                (click)="addToCart(product)"
+              >
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <p>Have any questions? We'd love to hear from you!</p>
+      <p>
+        Email: <a class="contact-link" href="mailto:raycharls@gmail.com">raycharls@gmail.com</a>
+        |
+        Phone: <a class="contact-link" href="tel:18007467669">1-800-SHOP-NOW</a>
+      </p>
+    </div>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2026 My Angular Shop. All rights reserved.</p>
+  </div>
+</footer>
+
+<router-outlet />
