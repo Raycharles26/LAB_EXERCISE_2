@@ -1,0 +1,19 @@
+<div id="products" class="products">
+  <div class="container">
+    <div class="product-grid">
+      <div class="product-card" *ngFor="let item of products">
+        <div class="product-image" *ngIf="item.image">
+          <img [src]="item.image" [alt]="item.name" />
+        </div>
+        <h3>{{ item.name }}</h3>
+        <p class="price">Price: ₱{{ item.price }}</p>
+        <p>Stock: {{ item.stock }}</p>
+        <p *ngIf="item.stock > 0; else outStock">Available</p>
+        <ng-template #outStock>
+          <p style="color:red;">Out of Stock</p>
+        </ng-template>
+        <button class="add-to-cart-btn" (click)="addToCart(item)" [disabled]="item.stock === 0">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+</div>
